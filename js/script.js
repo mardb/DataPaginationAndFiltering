@@ -25,7 +25,7 @@ This function will create and insert/append the elements needed to display a "pa
 Create the `showPage` function
 This function will create and insert/append the elements needed to display a "page" of nine students
 */
-const itemsPerPage = 9; 
+const itemsPerPage = 9;
 
 function showPage(list, page) {
   const startIndex = page * itemsPerPage - itemsPerPage;
@@ -83,7 +83,7 @@ button on console showing buttons -1 on front end looks great
     if ((e.target.tagName = "BUTTON")) {
       let activeClass = document.querySelector(".active");
       activeClass.className = "";
-      
+
       e.target.classList.add("active");
       showPage(list, e.target.textContent);
     } else {
@@ -93,21 +93,29 @@ button on console showing buttons -1 on front end looks great
 }
 addPagination(data);
 
-
-function search(){
-   let header = document.querySelector('header h2')
-   let searchBar = `
+function search(data) {
+  let header = document.querySelector("header h2");
+  let searchBar = `
    <label for="search" class="student-search">
             <span>Search by name</span>
             <input id="search" placeholder="Search by name...">
             <button type="button"><img src="img/icn-search.svg" alt="Search icon"></button>
           </label>
-   `
-  header.insertAdjacentHTML('afterend', searchBar)
-   const input = document.querySelector('input')
-   console.log(input)
+   `;
+  header.insertAdjacentHTML("afterend", searchBar);
+  const searchInput = document.querySelector("#search");
+  const searchButton = document.querySelector("button");
+
+  searchInput.addEventListener("keyup", (e) => {
+    console.log("keyup is working so far");
+  });
+  searchButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    console.log("submitted!");
+  });
 }
-search()
+search(data);
+
 /*
 EXTRA CREDIT
 
@@ -130,5 +138,3 @@ Note Don't use the built in alert() method here. The "No results" message must b
 
 
 */
-
-
