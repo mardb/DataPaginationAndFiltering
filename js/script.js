@@ -59,41 +59,39 @@ This function will create and insert/append the elements needed for the paginati
 */
 
 function addPagination(list) {
-  // console.log(list)
-  // create a variable to calculate the number of pages needed
   const numOfPages = Math.ceil(list.length / itemsPerPage);
-//   console.log(numOfPages);
-  // select the element with a class of `link-list` and assign it to a variable
   const linkList = document.querySelector(".link-list");
-  // set the innerHTML property of the variable you just created to an empty string
+
   linkList.innerHTML = "";
-//   console.log(linkList.innerHTML);
-// loop over the number of pages needed
-  
-  for(let i = 1 ;i <= numOfPages; i++){
-   //   console.log('inside loop!')
+
+  for (let i = 1; i <= numOfPages; i++) {
     let button = `
    <li><button type="button">${[i]}</button></li>
  `;
-//  console.log(i)
 
     linkList.insertAdjacentHTML("beforeend", button);
-    console.log(linkList);
-    //Next, we'll add the active class to the first button. We can do this by using querySelector to select the first button element and then use the className property to set the class to "active".
+
     let activeButton = document.querySelector("li button");
+
     activeButton.className = "active";
-    console.log(activeButton)
   }
-  console.log('outside loop');
-
-  // give the first pagination button a class of "active"
-
-  // create an event listener on the `link-list` element
-  // if the click target is a button:
-  // remove the "active" class from the previous button
-  // add the active class to the clicked button
-  // call the showPage function passing the `list` parameter and page to display as arguments
+  /*
+button on console showing buttons -1 on front end looks great
+*/
+  linkList.addEventListener("click", (e) => {
+    if ((e.target.tagName = "BUTTON")) {
+      console.log("button click working");
+      let activeClass = document.querySelector(".active");
+      activeClass.className = "";
+      e.target.classList.add("active");
+      console.log(activeClass);
+      console.log(e.target.textContent);
+      showPage(list, e.target.textContent);
+    } else {
+      activeClass.classList.remove("active");
+    }
+  });
 }
 addPagination(data);
 
-// Call functions
+
