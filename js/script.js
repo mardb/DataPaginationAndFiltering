@@ -62,26 +62,30 @@ function addPagination(list) {
   // console.log(list)
   // create a variable to calculate the number of pages needed
   const numOfPages = Math.ceil(list.length / itemsPerPage);
-  // console.log(numOfPages);
+//   console.log(numOfPages);
   // select the element with a class of `link-list` and assign it to a variable
   const linkList = document.querySelector(".link-list");
   // set the innerHTML property of the variable you just created to an empty string
   linkList.innerHTML = "";
-  // loop over the number of pages needed
-  for (let i = 1; i <= numOfPages.length; i++) {
-    const button = `<li>
-   <button type="button">${i}</button>
- </li>`;
+//   console.log(linkList.innerHTML);
+// loop over the number of pages needed
+  
+  for(let i = 1 ;i <= numOfPages; i++){
+   //   console.log('inside loop!')
+    let button = `
+   <li><button type="button">${[i]}</button></li>
+ `;
+//  console.log(i)
 
     linkList.insertAdjacentHTML("beforeend", button);
-//Next, we'll add the active class to the first button. We can do this by using querySelector to select the first button element and then use the className property to set the class to "active".
-    let activeButton = document.querySelector("li > button");
+    console.log(linkList);
+    //Next, we'll add the active class to the first button. We can do this by using querySelector to select the first button element and then use the className property to set the class to "active".
+    let activeButton = document.querySelector("li button");
     activeButton.className = "active";
-
+    console.log(activeButton)
   }
+  console.log('outside loop');
 
-
-  
   // give the first pagination button a class of "active"
 
   // create an event listener on the `link-list` element
