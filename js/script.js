@@ -55,14 +55,13 @@ function addPagination(list) {
 
   // adding event listener so that the pages change on the click of the pagination buttons.
   linkList.addEventListener("click", (e) => {
-    if ((e.target.tagName = "BUTTON")) {
+    if ((e.target.tagName === "BUTTON")) {
+       console.log('click event triggered!')
       let activeClass = document.querySelector(".active");
       activeClass.className = "";
       e.target.classList.add("active");
       showPage(list, e.target.textContent);
-    } else {
-      activeClass.classList.remove("active");
-    }
+    } 
   });
 }
 addPagination(data);
